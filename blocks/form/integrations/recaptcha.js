@@ -35,7 +35,7 @@ export default class GoogleReCaptcha {
           }
         });
       });
-      obs.observe(submit);
+      //obs.observe(submit);
     }
   }
 
