@@ -26,7 +26,7 @@ export default class GoogleReCaptcha {
 
   loadCaptcha(form) {
     if (form && this.siteKey) {
-     // const submit = form.querySelector('button[type="submit"]');
+      const submit = form.querySelector('button[type="submit"]');
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -35,7 +35,7 @@ export default class GoogleReCaptcha {
           }
         });
       });
-      //obs.observe(submit);
+      obs.observe(submit);
     }
   }
 
