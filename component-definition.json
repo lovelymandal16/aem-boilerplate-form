@@ -440,6 +440,24 @@
           }
         },
         {
+          "title": "reCAPTCHA (v1)",
+          "id": "recaptcha-v1",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/fd/components/form/recaptcha/v1/recaptcha",
+                "template": {
+                  "jcr:title": "reCAPTCHA (v1)",
+                  "fieldType": "captcha",
+                  "fd:viewType": "recaptcha-v1",
+                  "enabled": true,
+                  "visible": true
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Reset",
           "id": "form-reset-button",
           "plugins": {

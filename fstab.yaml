@@ -1,9 +1,5 @@
 mountpoints:
   /:
-   # url: https://author-p133911-e1313554.adobeaemcloud.com/bin/franklin.delivery/lovelymandal16/eds-boilerplate-forms/main
-   # url: https://author-p10652-e203356-cmstg.adobeaemcloud.com/bin/franklin.delivery/lovelymandal16/eds-boilerplate-forms/main
-   # url: https://260b-103-226-203-27.ngrok-free.app/bin/franklin.delivery/lovelymandal16/eds-boilerplate-forms/main
-   # url:  https://52cb-103-43-112-97.ngrok-free.app/bin/franklin.delivery/lovelymandal16/aem-boilerplate-forms/main
     url:  https://rapid-dory-quickly.ngrok-free.app/bin/franklin.delivery/lovelymandal16/aem-boilerplate-forms/main
     type: "markup"
     suffix: ".html"
