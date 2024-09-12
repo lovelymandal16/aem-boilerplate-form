@@ -37,6 +37,9 @@ export default class GoogleReCaptcha {
       });
       obs.observe(submit);
     }
+    else{
+      console.warn('Form or siteKey is not defined');
+    }
   }
 
   async getToken() {
