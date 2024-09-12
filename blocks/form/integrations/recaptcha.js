@@ -35,7 +35,11 @@ export default class GoogleReCaptcha {
           }
         });
       });
-      obs.observe(submit);
+      if(submit==null){
+        console.error('Submit button is not defined');
+      }
+      else 
+        obs.observe(submit);
     }
     else{
       console.warn('Form or siteKey is not defined');
