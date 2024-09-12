@@ -243,6 +243,7 @@ const fieldRenderers = {
   'checkbox-group': createRadioOrCheckboxGroup,
   image: createImage,
   heading: createHeading,
+  captcha : createPlainText
 };
 
 function colSpanDecorator(field, element) {
