@@ -396,6 +396,14 @@ async function createFormForAuthoring(formDef) {
   return form;
 }
 
+function renderCaptcha(captchaField) {
+  let captcha;
+    const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
+    captcha = new GoogleReCaptcha(siteKey, captchaField.id);
+    captcha.loadCaptcha(form);
+    return captcha; 
+  };
+
 export async function createForm(formDef, data) {
   const { action: formPath } = formDef;
   const form = document.createElement('form');
@@ -408,9 +416,10 @@ export async function createForm(formDef, data) {
 
   let captcha;
   if (captchaField) {
-    const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
-    captcha = new GoogleReCaptcha(siteKey, captchaField.id);
-    captcha.loadCaptcha(form);
+    // const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
+    // captcha = new GoogleReCaptcha(siteKey, captchaField.id);
+    // captcha.loadCaptcha(form);
+    captcha = renderCaptcha(captchaField)
   }
 
   enableValidation(form);

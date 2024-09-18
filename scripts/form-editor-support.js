@@ -82,7 +82,7 @@ function generateCaptchaRendition(fragmentFieldWrapper, fragmentDefinition) {
   titleEl.classList.add('captcha-title');
   titleEl.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
   fragmentFieldWrapper.appendChild(titleEl);
-  fragmentFieldWrapper.appendChild(document.createElement('hr'));
+  //fragmentFieldWrapper.appendChild(document.createElement('hr'));
   // const fragItems = getItems(fragmentDefinition);
   // fragItems.forEach((fragItem) => {
   //   const itemLabel = fragItem.label?.value || fragItem.name;
