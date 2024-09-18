@@ -137,9 +137,6 @@ function annotateItems(items, formDefinition, formFieldMap) {
             if (fd.properties['fd:fragment']) {
               annotateFormFragment(fieldWrapper, fd);
             } 
-            else if (fd.properties['fd:captcha']) {
-              annotateFormFragment(fieldWrapper, fd);
-            }
             else {
               annotateContainer(fieldWrapper, fd);
               annotateItems(getContainerChildNodes(fieldWrapper, fd), formDefinition, formFieldMap);
@@ -148,6 +145,9 @@ function annotateItems(items, formDefinition, formFieldMap) {
                 handleWizardNavigation(fieldWrapper.parentElement, fieldWrapper);
               }
             }
+          } 
+          else if (fd.fieldType === 'captcha') {
+            annotateFormFragment(fieldWrapper, fd);
           } else {
             fieldWrapper.setAttribute('data-aue-type', 'component');
             fieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fd.properties['fd:path']}`);
