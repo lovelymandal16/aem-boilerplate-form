@@ -136,7 +136,11 @@ function annotateItems(items, formDefinition, formFieldMap) {
           } else if (fd.fieldType === 'panel') {
             if (fd.properties['fd:fragment']) {
               annotateFormFragment(fieldWrapper, fd);
-            } else {
+            } 
+            else if (fd.properties['fd:captcha']) {
+              annotateFormFragment(fieldWrapper, fd);
+            }
+            else {
               annotateContainer(fieldWrapper, fd);
               annotateItems(getContainerChildNodes(fieldWrapper, fd), formDefinition, formFieldMap);
               // retain wizard step selection
