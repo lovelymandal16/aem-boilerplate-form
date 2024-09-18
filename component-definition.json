@@ -447,7 +447,7 @@
               "page": {
                 "resourceType": "core/fd/components/form/recaptcha/v1/recaptcha",
                 "template": {
-                  "jcr:title": "Adaptive Form reCAPTCHA (v1)",
+                  "jcr:title": "reCAPTCHA (v1)",
                   "fieldType": "captcha",
                   "enabled": true,
                   "visible": true

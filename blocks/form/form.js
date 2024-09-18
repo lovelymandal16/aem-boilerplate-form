@@ -396,7 +396,7 @@ async function createFormForAuthoring(formDef) {
   return form;
 }
 
-function renderCaptcha(captchaField) {
+function renderCaptcha(captchaField, form) {
   let captcha;
     const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
     captcha = new GoogleReCaptcha(siteKey, captchaField.id);
@@ -419,7 +419,7 @@ export async function createForm(formDef, data) {
     // const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
     // captcha = new GoogleReCaptcha(siteKey, captchaField.id);
     // captcha.loadCaptcha(form);
-    captcha = renderCaptcha(captchaField)
+    captcha = renderCaptcha(captchaField, form)
   }
 
   enableValidation(form);
