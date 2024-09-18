@@ -347,6 +347,23 @@
           }
         },
         {
+          "title": "Lovely",
+          "id": "lovely",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType":  "/core/fd/components/form/text/v1/text",
+                "template": {
+                  "jcr:title": "Lovely",
+                  "fieldType": "panel",
+                  "enabled": true,
+                  "visible": true
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Image",
           "id": "form-image",
           "plugins": {
