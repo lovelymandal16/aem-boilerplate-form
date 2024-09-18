@@ -77,6 +77,21 @@ function generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition) {
   });
 }
 
+function generateCaptchaRendition(fragmentFieldWrapper, fragmentDefinition) {
+  const titleEl = document.createElement('div');
+  titleEl.classList.add('captcha-title');
+  titleEl.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
+  fragmentFieldWrapper.appendChild(titleEl);
+  fragmentFieldWrapper.appendChild(document.createElement('hr'));
+  // const fragItems = getItems(fragmentDefinition);
+  // fragItems.forEach((fragItem) => {
+  //   const itemLabel = fragItem.label?.value || fragItem.name;
+  //   const itemLabelEl = document.createTextNode(itemLabel);
+  //   fragmentFieldWrapper.appendChild(itemLabelEl);
+  //   fragmentFieldWrapper.appendChild(document.createElement('br'));
+  // });
+}
+
 function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
   fragmentFieldWrapper.classList.toggle('fragment-wrapper', true);
   if (!fragmentFieldWrapper.classList.contains('edit-mode')) {
@@ -106,10 +121,10 @@ function annotateRecaptcha(fragmentFieldWrapper, fragmentDefinition) {
     newFieldWrapper.classList.add('edit-mode');
     newFieldWrapper.replaceChildren();
     fragmentFieldWrapper.insertAdjacentElement('afterend', newFieldWrapper);
-    generateFragmentRendition(newFieldWrapper, fragmentDefinition);
+    generateCaptchaRendition(newFieldWrapper, fragmentDefinition);
   } else {
     fragmentFieldWrapper.replaceChildren();
-    generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition);
+    generateCaptchaRendition(fragmentFieldWrapper, fragmentDefinition);
   }
 }
 

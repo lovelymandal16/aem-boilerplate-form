@@ -48,6 +48,34 @@ form.edit-mode .fragment-wrapper.edit-mode .fragment-title {
     color: #4b4b4b;
     padding-left: 25px;
 }
+/* -------------- lovely*/
+main .form form.edit-mode .captcha-wrapper:not(.edit-mode){
+    display: none;
+}
+
+main .form form:not(.edit-mode) .captcha-wrapper.edit-mode{
+    display: none;
+}
+
+main .form form.edit-mode .captcha-wrapper.edit-mode{
+    border-width: 1px;
+    padding: 15px;
+    font-weight: normal;
+    font-size: 13px;
+    text-align: left;
+    color: #969696;
+    border-color: rgba(0 0 0 / 15%);
+    border-radius: 4px;
+    background: linear-gradient(180deg,rgba(0 0 0 / 5%),rgba(255 255 255 / 5%),rgba(0 0 0 / 5%)),
+                linear-gradient(90deg,rgba(0 0 0 / 5%),rgba(255 255 255 / 5%),rgba(0 0 0 / 5%));
+}
+
+form.edit-mode .captcha-wrapper.edit-mode .captcha-title {
+    text-align: left;
+    color: #1b1b1b;
+    padding-left: 25px;
+}
+/* -------------- lovely*/
 
 form.edit-mode:not(:has(*)) {
     display: flex !important;
