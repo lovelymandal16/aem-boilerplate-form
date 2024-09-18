@@ -468,13 +468,7 @@
                   "fieldType": "captcha",
                   "fd:viewType": "recaptcha-v1",
                   "enabled": true,
-                  "visible": true,
-                  "text": {
-                    "value": "Text related to the terms and conditions come here.",
-                    "sling:resourceType": "core/fd/components/form/text/v1/text",
-                    "fieldType": "plain-text",
-                    "textIsRich": true
-                  }
+                  "visible": true
                 }
               }
             }

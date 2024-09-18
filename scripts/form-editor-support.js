@@ -78,6 +78,24 @@ function generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition) {
 }
 
 function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
+  fragmentFieldWrapper.classList.toggle('captcha-wrapper', true);
+  if (!fragmentFieldWrapper.classList.contains('edit-mode')) {
+    const newFieldWrapper = fragmentFieldWrapper.cloneNode(true);
+    newFieldWrapper.setAttribute('data-aue-type', 'component');
+    newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentDefinition.properties['fd:path']}`);
+    newFieldWrapper.setAttribute('data-aue-model', 'recaptcha-v1');
+    newFieldWrapper.setAttribute('data-aue-label', fragmentDefinition.label?.value || fragmentDefinition.name);
+    newFieldWrapper.classList.add('edit-mode');
+    newFieldWrapper.replaceChildren();
+    fragmentFieldWrapper.insertAdjacentElement('afterend', newFieldWrapper);
+    generateFragmentRendition(newFieldWrapper, fragmentDefinition);
+  } else {
+    fragmentFieldWrapper.replaceChildren();
+    generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition);
+  }
+}
+
+function annotateRecaptcha(fragmentFieldWrapper, fragmentDefinition) {
   fragmentFieldWrapper.classList.toggle('fragment-wrapper', true);
   if (!fragmentFieldWrapper.classList.contains('edit-mode')) {
     const newFieldWrapper = fragmentFieldWrapper.cloneNode(true);
@@ -147,7 +165,7 @@ function annotateItems(items, formDefinition, formFieldMap) {
             }
           } 
           else if (fd.fieldType === 'captcha') {
-            annotateFormFragment(fieldWrapper, fd);
+            annotateRecaptcha(fieldWrapper, fd);
           } else {
             fieldWrapper.setAttribute('data-aue-type', 'component');
             fieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fd.properties['fd:path']}`);
