@@ -78,12 +78,12 @@ function generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition) {
 }
 
 function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
-  fragmentFieldWrapper.classList.toggle('captcha-wrapper', true);
+  fragmentFieldWrapper.classList.toggle('fragment-wrapper', true);
   if (!fragmentFieldWrapper.classList.contains('edit-mode')) {
     const newFieldWrapper = fragmentFieldWrapper.cloneNode(true);
     newFieldWrapper.setAttribute('data-aue-type', 'component');
     newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentDefinition.properties['fd:path']}`);
-    newFieldWrapper.setAttribute('data-aue-model', 'recaptcha-v1');
+    newFieldWrapper.setAttribute('data-aue-model', 'form-fragment');
     newFieldWrapper.setAttribute('data-aue-label', fragmentDefinition.label?.value || fragmentDefinition.name);
     newFieldWrapper.classList.add('edit-mode');
     newFieldWrapper.replaceChildren();
@@ -96,12 +96,12 @@ function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
 }
 
 function annotateRecaptcha(fragmentFieldWrapper, fragmentDefinition) {
-  fragmentFieldWrapper.classList.toggle('fragment-wrapper', true);
+  fragmentFieldWrapper.classList.toggle('captcha-wrapper', true);
   if (!fragmentFieldWrapper.classList.contains('edit-mode')) {
     const newFieldWrapper = fragmentFieldWrapper.cloneNode(true);
     newFieldWrapper.setAttribute('data-aue-type', 'component');
     newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentDefinition.properties['fd:path']}`);
-    newFieldWrapper.setAttribute('data-aue-model', 'form-fragment');
+    newFieldWrapper.setAttribute('data-aue-model', 'recaptcha-v1');
     newFieldWrapper.setAttribute('data-aue-label', fragmentDefinition.label?.value || fragmentDefinition.name);
     newFieldWrapper.classList.add('edit-mode');
     newFieldWrapper.replaceChildren();
