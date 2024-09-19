@@ -5,6 +5,7 @@ import {
   stripTags,
   checkValidation,
   toClassName,
+  createCaptchaWrapper
 } from './util.js';
 import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
