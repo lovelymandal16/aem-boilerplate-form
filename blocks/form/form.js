@@ -416,7 +416,7 @@ export async function createForm(formDef, data) {
   await generateFormRendition(formDef, form);
 
   let captcha;
-  if (captchaField) {
+  if (captchaField && !form.classList.contains('edit-mode')) {
     // const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
     // captcha = new GoogleReCaptcha(siteKey, captchaField.id);
     // captcha.loadCaptcha(form);
