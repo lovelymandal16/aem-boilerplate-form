@@ -19,7 +19,8 @@ export default class GoogleReCaptcha {
         script.async = true;
         script.onload = () => resolve(window.grecaptcha);
         script.onerror = () => reject(new Error(`Failed to load script ${url}`));
-        head.append(script);
+        if (document.documentElement.classList.contains('adobe-ue-edit'))
+          head.append(script);
       });
     }
   }
