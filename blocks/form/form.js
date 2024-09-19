@@ -350,7 +350,7 @@ export async function generateFormRendition(panel, container, getItems = (p) => 
     if (fieldType === 'captcha') {
       captchaField = field;
      // const element = renderField(field);
-     const element = createFieldWrapper(field); 
+     const element = createCaptchaWrapper(field); 
       return element;
       //annotateFormFragment(fieldWrapper, field);
     } else {
