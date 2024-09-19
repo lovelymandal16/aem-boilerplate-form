@@ -112,7 +112,7 @@ function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
 
 function annotateRecaptcha(fragmentFieldWrapper, fragmentDefinition) {
   fragmentFieldWrapper.classList.toggle('captcha-wrapper', true);
-  if (!fragmentFieldWrapper.classList.contains('edit-mode')) {
+  if (fragmentFieldWrapper.classList.contains('edit-mode')) {
     const newFieldWrapper = fragmentFieldWrapper.cloneNode(true);
     newFieldWrapper.setAttribute('data-aue-type', 'component');
     newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentDefinition.properties['fd:path']}`);

@@ -397,13 +397,13 @@ async function createFormForAuthoring(formDef) {
   return form;
 }
 
-function renderCaptcha(captchaField, form) {
-  let captcha;
-    const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
-    captcha = new GoogleReCaptcha(siteKey, captchaField.id);
-    captcha.loadCaptcha(form);
-    return captcha; 
-  };
+// function renderCaptcha(captchaField, form) {
+//   let captcha;
+//     const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
+//     captcha = new GoogleReCaptcha(siteKey, captchaField.id);
+//     captcha.loadCaptcha(form);
+//     return captcha; 
+//   };
 
 export async function createForm(formDef, data) {
   const { action: formPath } = formDef;
@@ -416,11 +416,11 @@ export async function createForm(formDef, data) {
   await generateFormRendition(formDef, form);
 
   let captcha;
-  if (captchaField && !form.classList.contains('edit-mode')) {
-    // const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
-    // captcha = new GoogleReCaptcha(siteKey, captchaField.id);
-    // captcha.loadCaptcha(form);
-    captcha = renderCaptcha(captchaField, form)
+  if (captchaField) {
+     const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
+     captcha = new GoogleReCaptcha(siteKey, captchaField.id);
+     captcha.loadCaptcha(form);
+    //captcha = renderCaptcha(captchaField, form)
   }
 
   enableValidation(form);
