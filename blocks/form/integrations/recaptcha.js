@@ -19,8 +19,13 @@ export default class GoogleReCaptcha {
         script.async = true;
         script.onload = () => resolve(window.grecaptcha);
         script.onerror = () => reject(new Error(`Failed to load script ${url}`));
+
+        const dev_cap = document.head || document.querySelector('recaptcha-title2');
+       // dev_cap.append();
+
         if (!(document.documentElement.classList.contains('adobe-ue-edit')))
-          head.append(script);
+         // head.append(script);
+        dev_cap.append(script);
       });
     }
   }
