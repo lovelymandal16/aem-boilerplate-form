@@ -30,8 +30,10 @@ export default class GoogleReCaptcha {
         const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
         if(captcha_wrapper!=null){
           const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
+          if(recaptchahtml != null){
           const detachedHead = head.parentNode.removeChild(recaptchahtml);
           captchaWrapper[0].appendChild(detachedHead);
+          }
         }
         //captcha_wrapper[0].append(head);
       });
