@@ -31,10 +31,12 @@ export default class GoogleReCaptcha {
         if(captcha_wrapper!=null){
           const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
           if(recaptchahtml != null){
-          const detachedHead = recaptchahtml.parentNode.removeChild(recaptchahtml);
-          captcha_wrapper[0].appendChild(detachedHead);
+          //const detachedHead = recaptchahtml.parentNode.removeChild(recaptchahtml);
+          captcha_wrapper[0].appendChild(recaptchahtml);
           }
         }
+        const xyz_div = document.getElementById('xyz');
+        xyz_div.append(head);
         //captcha_wrapper[0].append(head);
       });
     }

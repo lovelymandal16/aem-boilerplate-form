@@ -96,6 +96,11 @@ export function createCaptchaWrapper(fd, tagName = 'div', labelFn = createLabel)
     fieldWrapper.dataset.visible = fd.visible;
   }
   fieldWrapper.classList.add('field-wrapper');
+
+  const xyz = document.createElement('div');
+  xyz.id= "test"; 
+  xyz.title = "test";
+  fieldWrapper.insertAdjacentElement('beforeend', xyz);
   // if (fd.label && fd.label.value && typeof labelFn === 'function') {
   //   const label = labelFn(fd);
   //   if (label) { fieldWrapper.append(label); }
