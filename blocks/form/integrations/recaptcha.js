@@ -32,7 +32,7 @@ export default class GoogleReCaptcha {
           const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
           if(recaptchahtml != null){
           const detachedHead = recaptchahtml.parentNode.removeChild(recaptchahtml);
-          captchaWrapper[0].appendChild(detachedHead);
+          captcha_wrapper[0].appendChild(detachedHead);
           }
         }
         //captcha_wrapper[0].append(head);
