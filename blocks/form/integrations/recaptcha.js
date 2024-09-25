@@ -24,8 +24,12 @@ export default class GoogleReCaptcha {
        // dev_cap.append();
 
         //if (!(document.documentElement.classList.contains('adobe-ue-edit')))
-        head.append(script);
+       // head.append(script);
         //dev_cap.append(script);
+
+        const captcha_wrapper = document.getElementById('captcha-wrapper');
+        if(captcha_wrapper!=null)
+        captcha_wrapper.append(script);
       });
     }
   }

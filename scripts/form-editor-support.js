@@ -110,7 +110,11 @@ function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
     newFieldWrapper.replaceChildren();
     fragmentFieldWrapper.insertAdjacentElement('afterend', newFieldWrapper);
     generateFragmentRendition(newFieldWrapper, fragmentDefinition);
-  } else {
+  } 
+  // else if(!fragmentFieldWrapper.classList.contains('preview-mode')) {
+  //   fragmentFieldWrapper.classList.add('preview-mode');
+  // }
+  else {
     fragmentFieldWrapper.replaceChildren();
     generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition);
   }
