@@ -29,7 +29,7 @@ export default class GoogleReCaptcha {
 
         const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
         if(captcha_wrapper!=null)
-        captcha_wrapper[1].append(script);
+        captcha_wrapper[0].append(script);
       });
     }
   }
