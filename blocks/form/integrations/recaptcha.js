@@ -31,6 +31,7 @@ export default class GoogleReCaptcha {
         if(captcha_wrapper!=null){
           const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
           if(recaptchahtml != null){
+            recaptchahtml.style.position = 'static';
             if(recaptchahtml.parentNode != null)
             recaptchahtml.parentNode.removeChild(recaptchahtml);
           captcha_wrapper[0].appendChild(recaptchahtml);
