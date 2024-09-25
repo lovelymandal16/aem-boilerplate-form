@@ -24,12 +24,16 @@ export default class GoogleReCaptcha {
        // dev_cap.append();
 
         //if (!(document.documentElement.classList.contains('adobe-ue-edit')))
-       // head.append(script);
+        head.append(script);
         //dev_cap.append(script);
 
         const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
-        if(captcha_wrapper!=null)
-        captcha_wrapper[0].append(script);
+        if(captcha_wrapper!=null){
+          const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
+          const detachedHead = head.parentNode.removeChild(recaptchahtml);
+          captchaWrapper[0].appendChild(detachedHead);
+        }
+        //captcha_wrapper[0].append(head);
       });
     }
   }
@@ -60,12 +64,12 @@ export default class GoogleReCaptcha {
     if (!this.siteKey) {
       return null;
     }
-    // return new Promise((resolve) => {
-    //   const { grecaptcha } = window;
-    //   grecaptcha.ready(async () => {
-    //     const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
-    //     resolve(token);
-    //   });
-    // });
+    return new Promise((resolve) => {
+      const { grecaptcha } = window;
+      grecaptcha.ready(async () => {
+        const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
+        resolve(token);
+      });
+    });
   }
 }
