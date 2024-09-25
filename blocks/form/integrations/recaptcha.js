@@ -29,7 +29,7 @@ export default class GoogleReCaptcha {
 
         const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
         if(captcha_wrapper!=null)
-        captcha_wrapper[0].append(script);
+        captcha_wrapper[1].append(script);
       });
     }
   }
@@ -60,12 +60,12 @@ export default class GoogleReCaptcha {
     if (!this.siteKey) {
       return null;
     }
-    return new Promise((resolve) => {
-      const { grecaptcha } = window;
-      grecaptcha.ready(async () => {
-        const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
-        resolve(token);
-      });
-    });
+    // return new Promise((resolve) => {
+    //   const { grecaptcha } = window;
+    //   grecaptcha.ready(async () => {
+    //     const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
+    //     resolve(token);
+    //   });
+    // });
   }
 }
