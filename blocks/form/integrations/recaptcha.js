@@ -27,9 +27,9 @@ export default class GoogleReCaptcha {
        // head.append(script);
         //dev_cap.append(script);
 
-        const captcha_wrapper = document.getElementById('captcha-wrapper');
+        const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
         if(captcha_wrapper!=null)
-        captcha_wrapper.append(script);
+        captcha_wrapper[0].append(script);
       });
     }
   }
