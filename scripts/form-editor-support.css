@@ -49,9 +49,9 @@ form.edit-mode .fragment-wrapper.edit-mode .fragment-title {
     padding-left: 25px;
 }
 
-main .form form.edit-mode .captcha-wrapper:not(.edit-mode){
+/* main .form form.edit-mode .captcha-wrapper:not(.edit-mode){
     display: none;
-}
+} */
 
 main .form form:not(.edit-mode) .captcha-wrapper.edit-mode{
     display: none;

@@ -83,11 +83,11 @@ function generateCaptchaRendition(fragmentFieldWrapper, fragmentDefinition) {
   titleEl.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
   titleEl.id ="recaptcha-title";
   fragmentFieldWrapper.appendChild(titleEl);
-  const titleEl2 = document.createElement('div');
-  titleEl2.classList.add('captcha-title2');
+  // const titleEl2 = document.createElement('div');
+  // titleEl2.classList.add('captcha-title2');
  // titleEl2.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
-  titleEl2.id ="recaptcha-title2";
-  fragmentFieldWrapper.appendChild(titleEl2);
+ // titleEl2.id ="recaptcha-title2";
+  //fragmentFieldWrapper.appendChild(titleEl2);
   //fragmentFieldWrapper.appendChild(document.createElement('hr'));
   // const fragItems = getItems(fragmentDefinition);
   // fragItems.forEach((fragItem) => {
