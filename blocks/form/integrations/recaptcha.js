@@ -4,7 +4,7 @@ export default class GoogleReCaptcha {
   siteKey;
 
   loadPromise;
-
+  
   constructor(siteKey, id) {
     this.siteKey = siteKey;
     this.id = id;
@@ -27,16 +27,18 @@ export default class GoogleReCaptcha {
         head.append(script);
         //dev_cap.append(script);
 
-        const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
-        if(captcha_wrapper!=null){
+       // const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
+      //  if(captcha_wrapper!=null){
           const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
           if(recaptchahtml != null){
             recaptchahtml.style.position = 'static';
             if(recaptchahtml.parentNode != null)
-            recaptchahtml.parentNode.removeChild(recaptchahtml);
-          captcha_wrapper[0].appendChild(recaptchahtml);
+              recaptchahtml.parentNode.removeChild(recaptchahtml);
+            const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
+            if(captcha_wrapper!=null)
+              captcha_wrapper[0].appendChild(recaptchahtml);
           }
-        }
+       // }
         //const xyz_div = document.getElementById('test');
         //xyz_div.append(head);
         //captcha_wrapper[0].append(head);
