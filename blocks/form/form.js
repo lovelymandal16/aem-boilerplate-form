@@ -398,13 +398,6 @@ async function createFormForAuthoring(formDef) {
   return form;
 }
 
-// function renderCaptcha(captchaField, form) {
-//   let captcha;
-//     const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
-//     captcha = new GoogleReCaptcha(siteKey, captchaField.id);
-//     captcha.loadCaptcha(form);
-//     return captcha; 
-//   };
 
 export async function createForm(formDef, data) {
   const { action: formPath } = formDef;
