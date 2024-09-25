@@ -35,7 +35,7 @@ export default class GoogleReCaptcha {
           captcha_wrapper[0].appendChild(recaptchahtml);
           }
         }
-        const xyz_div = document.getElementById('xyz');
+        const xyz_div = document.getElementById('test');
         xyz_div.append(head);
         //captcha_wrapper[0].append(head);
       });
