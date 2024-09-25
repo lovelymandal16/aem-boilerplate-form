@@ -52,7 +52,7 @@ export default class GoogleReCaptcha {
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if(window.currentMode === 'preview')
+       //     if(window.currentMode === 'preview')
             this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${this.siteKey}`);
             obs.disconnect();
           }
