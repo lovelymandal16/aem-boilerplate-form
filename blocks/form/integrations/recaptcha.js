@@ -13,7 +13,7 @@ export default class GoogleReCaptcha {
   #loadScript(url) {
     if (!this.loadPromise) {
       this.loadPromise = new Promise((resolve, reject) => {
-        const head = document.head || document.querySelector('head');
+      //  const head = document.head || document.querySelector('head');
         const script = document.createElement('script');
         script.src = url;
         script.async = true;
@@ -24,7 +24,7 @@ export default class GoogleReCaptcha {
        // dev_cap.append();
 
         //if (!(document.documentElement.classList.contains('adobe-ue-edit')))
-        head.append(script);
+      //  head.append(script);
         //dev_cap.append(script);
 
        // const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
