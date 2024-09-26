@@ -17,7 +17,7 @@ export default class GoogleReCaptcha {
         const script = document.createElement('script');
         script.src = url;
         script.async = true;
-        script.onload = () => resolve(window.grecaptcha);
+        
         script.onerror = () => reject(new Error(`Failed to load script ${url}`));
 
        // const dev_cap = document.head || document.querySelector('recaptcha-title2');
@@ -48,16 +48,21 @@ export default class GoogleReCaptcha {
         } else {
           reject(new Error('Captcha wrapper not found'));
         }
-        const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
-        if (recaptchahtml) {
-          recaptchahtml.style.position = 'static';
-          if (recaptchahtml.parentNode) {
-            recaptchahtml.parentNode.removeChild(recaptchahtml);
+        
+        script.onload = () => {
+          resolve(window.grecaptcha);
+          const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
+          if (recaptchahtml) {
+            recaptchahtml.style.position = 'static';
+            if (recaptchahtml.parentNode) {
+              recaptchahtml.parentNode.removeChild(recaptchahtml);
+            }
+            if (captchaWrapper) {
+              captchaWrapper.appendChild(recaptchahtml);
+            }
           }
-          if (captchaWrapper) {
-            captchaWrapper.appendChild(recaptchahtml);
-          }
-        }
+        };
+
       });
     }
   }
