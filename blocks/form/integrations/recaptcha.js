@@ -50,7 +50,7 @@ export default class GoogleReCaptcha {
         }
         
         script.onload = () => {
-          resolve(window.grecaptcha);
+          //resolve(window.grecaptcha);
           const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
           if (recaptchahtml) {
             recaptchahtml.style.position = 'static';
