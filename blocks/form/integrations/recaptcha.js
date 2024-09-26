@@ -18,14 +18,21 @@ export default class GoogleReCaptcha {
         const script = document.createElement('script');
         script.src = url;
         script.async = true;
+        script.defer = true;
         script.onload = () => resolve(window.grecaptcha);
         script.onerror = () => reject(new Error(`Failed to load script ${url}`));
-        captchaWrapper.classList.add('g-recaptcha');
-        captchaWrapper.setAttribute('data-sitekey', this.siteKey); 
+        captchaWrapper.appendChild(script);
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('g-recaptcha'); // Optionally add a class to the new div
+       
+
+       // captchaWrapper.classList.add('g-recaptcha');
+        newDiv.setAttribute('data-sitekey', this.siteKey); 
+        captchaWrapper.appendChild(newDiv);
         //head.append(script);
         //if (captchaWrapper) {
           //if(window.currentMode === 'preview')
-          captchaWrapper.appendChild(script);
+          
         //}
       });
     }
