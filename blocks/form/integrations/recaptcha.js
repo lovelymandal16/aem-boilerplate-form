@@ -1,3 +1,19 @@
+function isRecaptchaLoaded() {
+  return typeof window.grecaptcha !== 'undefined';
+}
+function handleRecaptchaBadge() {
+  const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
+  if (recaptchahtml) {
+    recaptchahtml.style.position = 'static';
+    if (recaptchahtml.parentNode) {
+      recaptchahtml.parentNode.removeChild(recaptchahtml);
+    }
+    const captchaWrapper = document.getElementsByClassName('captcha-wrapper')[0];
+    if (captchaWrapper) {
+      captchaWrapper.appendChild(recaptchahtml);
+    }
+  }
+}
 export default class GoogleReCaptcha {
   id;
 
@@ -10,14 +26,19 @@ export default class GoogleReCaptcha {
     this.id = id;
   }
 
+ 
+
   #loadScript(url) {
+    if (isRecaptchaLoaded()) {
+      handleRecaptchaBadge();
+    }else {
     if (!this.loadPromise) {
       this.loadPromise = new Promise((resolve, reject) => {
       //  const head = document.head || document.querySelector('head');
         const script = document.createElement('script');
         script.src = url;
         script.async = true;
-        
+        script.onload = () =>  resolve(window.grecaptcha);
         script.onerror = () => reject(new Error(`Failed to load script ${url}`));
 
        // const dev_cap = document.head || document.querySelector('recaptcha-title2');
@@ -49,22 +70,23 @@ export default class GoogleReCaptcha {
           reject(new Error('Captcha wrapper not found'));
         }
         
-        script.onload = () => {
-          //resolve(window.grecaptcha);
-          const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
-          if (recaptchahtml) {
-            recaptchahtml.style.position = 'static';
-            if (recaptchahtml.parentNode) {
-              recaptchahtml.parentNode.removeChild(recaptchahtml);
-            }
-            if (captchaWrapper) {
-              captchaWrapper.appendChild(recaptchahtml);
-            }
-          }
-        };
+        // script.onload = () => {
+        //   resolve(window.grecaptcha);
+        //   const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
+        //   if (recaptchahtml) {
+        //     recaptchahtml.style.position = 'static';
+        //     if (recaptchahtml.parentNode) {
+        //       recaptchahtml.parentNode.removeChild(recaptchahtml);
+        //     }
+        //     if (captchaWrapper) {
+        //       captchaWrapper.appendChild(recaptchahtml);
+        //     }
+        //   }
+        // };
 
       });
     }
+  }
   }
 
   loadCaptcha(form) {
