@@ -1,93 +1,34 @@
-function isRecaptchaLoaded() {
-  return typeof window.grecaptcha !== 'undefined';
-}
-function handleRecaptchaBadge() {
-  const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
-  if (recaptchahtml) {
-    recaptchahtml.style.position = 'static';
-    if (recaptchahtml.parentNode) {
-      recaptchahtml.parentNode.removeChild(recaptchahtml);
-    }
-    const captchaWrapper = document.getElementsByClassName('captcha-wrapper')[0];
-    if (captchaWrapper) {
-      captchaWrapper.appendChild(recaptchahtml);
-    }
-  }
-}
 export default class GoogleReCaptcha {
   id;
 
   siteKey;
 
   loadPromise;
-  
+
   constructor(siteKey, id) {
     this.siteKey = siteKey;
     this.id = id;
   }
 
- 
-
-  #loadScript(url) {
-    if (isRecaptchaLoaded()) {
-      handleRecaptchaBadge();
-    }else {
+  #loadScript(url, siteKey) {
     if (!this.loadPromise) {
       this.loadPromise = new Promise((resolve, reject) => {
-      //  const head = document.head || document.querySelector('head');
+        //const head = document.head || document.querySelector('head');
+        const captchaWrapper = document.getElementsByClassName('captcha-wrapper')[0];
         const script = document.createElement('script');
         script.src = url;
         script.async = true;
-        script.onload = () =>  resolve(window.grecaptcha);
+        script.onload = () => resolve(window.grecaptcha);
         script.onerror = () => reject(new Error(`Failed to load script ${url}`));
-
-       // const dev_cap = document.head || document.querySelector('recaptcha-title2');
-       // dev_cap.append();
-
-        //if (!(document.documentElement.classList.contains('adobe-ue-edit')))
-      //  head.append(script);
-        //dev_cap.append(script);
-
-       // const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
-      //  if(captcha_wrapper!=null){
-          // const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
-          // if(recaptchahtml != null){
-          //   recaptchahtml.style.position = 'static';
-          //   if(recaptchahtml.parentNode != null)
-          //     recaptchahtml.parentNode.removeChild(recaptchahtml);
-          //   const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
-          //   if(captcha_wrapper!=null)
-          //     captcha_wrapper[0].appendChild(recaptchahtml);
-          // }
-       // }
-        //const xyz_div = document.getElementById('test');
-        //xyz_div.append(head);
-        //captcha_wrapper[0].append(head);
-        const captchaWrapper = document.getElementsByClassName('captcha-wrapper')[0];
-        if (captchaWrapper) {
-          if(window.currentMode === 'preview')
+        captchaWrapper.classList.add('g-recaptcha');
+        captchaWrapper.setAttribute('data-sitekey', this.siteKey); 
+        //head.append(script);
+        //if (captchaWrapper) {
+          //if(window.currentMode === 'preview')
           captchaWrapper.appendChild(script);
-        } else {
-          reject(new Error('Captcha wrapper not found'));
-        }
-        
-        // script.onload = () => {
-        //   resolve(window.grecaptcha);
-        //   const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
-        //   if (recaptchahtml) {
-        //     recaptchahtml.style.position = 'static';
-        //     if (recaptchahtml.parentNode) {
-        //       recaptchahtml.parentNode.removeChild(recaptchahtml);
-        //     }
-        //     if (captchaWrapper) {
-        //       captchaWrapper.appendChild(recaptchahtml);
-        //     }
-        //   }
-        // };
-
+        //}
       });
     }
-  }
   }
 
   loadCaptcha(form) {
@@ -96,20 +37,22 @@ export default class GoogleReCaptcha {
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-       //     if(window.currentMode === 'preview')
-            this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${this.siteKey}`);
+            //this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${this.siteKey}`);
+            this.#loadScript('https://www.recaptcha.net/recaptcha/api.js', this.siteKey);
             obs.disconnect();
           }
         });
       });
       if(submit==null){
         console.error('Submit button is not defined');
+        alert('Submit button is not defined. Add a submit button to the form');
       }
-      else 
+      else
         obs.observe(submit);
     }
     else{
       console.warn('Form or siteKey is not defined');
+      alert('Form or siteKey is not defined');
     }
   }
 
