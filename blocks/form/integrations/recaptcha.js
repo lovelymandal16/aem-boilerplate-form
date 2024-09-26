@@ -65,6 +65,7 @@ export default class GoogleReCaptcha {
         //captcha_wrapper[0].append(head);
         const captchaWrapper = document.getElementsByClassName('captcha-wrapper')[0];
         if (captchaWrapper) {
+          if(window.currentMode === 'preview')
           captchaWrapper.appendChild(script);
         } else {
           reject(new Error('Captcha wrapper not found'));
