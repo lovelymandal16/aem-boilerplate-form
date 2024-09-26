@@ -48,6 +48,16 @@ export default class GoogleReCaptcha {
         } else {
           reject(new Error('Captcha wrapper not found'));
         }
+        const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
+        if (recaptchahtml) {
+          recaptchahtml.style.position = 'static';
+          if (recaptchahtml.parentNode) {
+            recaptchahtml.parentNode.removeChild(recaptchahtml);
+          }
+          if (captchaWrapper) {
+            captchaWrapper.appendChild(recaptchahtml);
+          }
+        }
       });
     }
   }
