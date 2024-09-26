@@ -29,19 +29,25 @@ export default class GoogleReCaptcha {
 
        // const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
       //  if(captcha_wrapper!=null){
-          const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
-          if(recaptchahtml != null){
-            recaptchahtml.style.position = 'static';
-            if(recaptchahtml.parentNode != null)
-              recaptchahtml.parentNode.removeChild(recaptchahtml);
-            const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
-            if(captcha_wrapper!=null)
-              captcha_wrapper[0].appendChild(recaptchahtml);
-          }
+          // const recaptchahtml = document.getElementsByClassName('grecaptcha-badge')[0];
+          // if(recaptchahtml != null){
+          //   recaptchahtml.style.position = 'static';
+          //   if(recaptchahtml.parentNode != null)
+          //     recaptchahtml.parentNode.removeChild(recaptchahtml);
+          //   const captcha_wrapper = document.getElementsByClassName('captcha-wrapper');
+          //   if(captcha_wrapper!=null)
+          //     captcha_wrapper[0].appendChild(recaptchahtml);
+          // }
        // }
         //const xyz_div = document.getElementById('test');
         //xyz_div.append(head);
         //captcha_wrapper[0].append(head);
+        const captchaWrapper = document.getElementsByClassName('captcha-wrapper')[0];
+        if (captchaWrapper) {
+          captchaWrapper.appendChild(script);
+        } else {
+          reject(new Error('Captcha wrapper not found'));
+        }
       });
     }
   }
