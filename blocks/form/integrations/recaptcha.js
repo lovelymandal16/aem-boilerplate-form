@@ -29,7 +29,7 @@ export default class GoogleReCaptcha {
        
 
        // captchaWrapper.classList.add('g-recaptcha');
-        newDiv.setAttribute('data-sitekey', this.siteKey); 
+        newDiv.setAttribute('data-sitekey', this.config.siteKey); 
         captchaWrapper.appendChild(newDiv);
         //head.append(script);
         //if (captchaWrapper) {
