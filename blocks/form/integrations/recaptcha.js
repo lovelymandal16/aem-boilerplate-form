@@ -41,11 +41,11 @@ export default class GoogleReCaptcha {
   }
 
 
-  isRecaptchaEnterprise = function() {
+  isRecaptchaEnterprise () {
     return this.config.version === "enterprise";
   }
 
-  isScoreBasedKey = function() {
+  isScoreBasedKey () {
     return isRecaptchaEnterprise() && this.config.keyType === "score";
   }
 //allow no submit button if v2 and introduce a submit button if v3
