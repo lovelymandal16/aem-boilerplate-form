@@ -63,7 +63,7 @@ export default class GoogleReCaptcha {
             else if(this.config.version == 'enterprise'){
               //this.#loadScript(url + '?render=' + siteKey);
               //window.onloadRecaptchaCallback = onloadCallbackInternal;
-              let queryParams = this.config.keyType === "score" ? "?render=" + siteKey: "?onload=onloadRecaptchaCallback&render=explicit";
+              let queryParams =  "?onload=onloadRecaptchaCallback&render=explicit";
               this.#loadScript(url + queryParams);
             }
             else{
