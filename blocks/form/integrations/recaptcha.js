@@ -52,9 +52,9 @@ export default class GoogleReCaptcha {
                 this.#loadScript(url);
             }
             else{
-              if(!(window.currentMode === 'preview')){
+              //if(!(window.currentMode === 'preview')){
                 this.#loadScript(url+ '?render=' + siteKey);
-              }
+              //}
             }
             // const siteKey = this.config.siteKey;
             // var url;  
