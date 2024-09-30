@@ -48,14 +48,14 @@ export default class GoogleReCaptcha {
           if (entry.isIntersecting) {
             const siteKey = this.config.siteKey;
             const url = this.config.uri ;//+ '?render=' + siteKey;
-            if(this.config.version == 'v2'){
+            //if(this.config.version == 'v2'){
                 this.#loadScript(url);
-            }
-            else{
+            //}
+            //else{
               //if(!(window.currentMode === 'preview')){
-                this.#loadScript(url+ '?render=' + siteKey);
+              //  this.#loadScript(url+ '?render=' + siteKey);
               //}
-            }
+            //}
             // const siteKey = this.config.siteKey;
             // var url;  
             // if(this.config.version == 'v2')
