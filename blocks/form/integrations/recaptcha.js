@@ -37,13 +37,13 @@ export default class GoogleReCaptcha {
           if (entry.isIntersecting) {
             const siteKey = this.config.siteKey;
             const url = this.config.uri ;
-            if(this.config.version == 'v2'){
+            if(this.config.version == 'v2' || this.config.version == 'enterprise'){
                 this.#loadScript(url);
             }
-            else if(this.config.version == 'enterprise'){
-              let queryParams =  "?onload=onloadRecaptchaCallback&render=explicit";
-              this.#loadScript(url + queryParams);
-            }
+            // else if(this.config.version == 'enterprise'){
+            //   let queryParams =  "?onload=onloadRecaptchaCallback&render=explicit";
+            //   this.#loadScript(url + queryParams);
+            // }
             else{
               this.#loadScript('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey);
             }
