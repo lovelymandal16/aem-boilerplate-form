@@ -39,6 +39,15 @@ export default class GoogleReCaptcha {
       });
     }
   }
+
+
+  isRecaptchaEnterprise = function() {
+    return this.config.version === "enterprise";
+  }
+
+  isScoreBasedKey = function() {
+    return isRecaptchaEnterprise() && this.config.keyType === "score";
+  }
 //allow no submit button if v2 and introduce a submit button if v3
   loadCaptcha(form) {
     if (form && this.config.siteKey) {
@@ -48,9 +57,18 @@ export default class GoogleReCaptcha {
           if (entry.isIntersecting) {
             const siteKey = this.config.siteKey;
             const url = this.config.uri ;//+ '?render=' + siteKey;
-            //if(this.config.version == 'v2'){
+            if(this.config.version == 'v2'){
                 this.#loadScript(url);
-            //}
+            }
+            else if(this.config.version == 'enterprise'){
+              //this.#loadScript(url + '?render=' + siteKey);
+              //window.onloadRecaptchaCallback = onloadCallbackInternal;
+              let queryParams = isScoreBasedKey() ? "?render=" + siteKey: "?onload=onloadRecaptchaCallback&render=explicit";
+              this.#loadScript(url + queryParams);
+            }
+            else{
+              this.#loadScript('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey);
+            }
             //else{
               //if(!(window.currentMode === 'preview')){
               //  this.#loadScript(url+ '?render=' + siteKey);
