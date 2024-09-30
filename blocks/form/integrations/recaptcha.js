@@ -41,13 +41,13 @@ export default class GoogleReCaptcha {
   }
 
 
-  isRecaptchaEnterprise () {
-    return this.config.version === "enterprise";
-  }
+  // isRecaptchaEnterprise () {
+  //   return this.config.version === "enterprise";
+  // }
 
-  isScoreBasedKey () {
-    return isRecaptchaEnterprise() && this.config.keyType === "score";
-  }
+  // isScoreBasedKey() {
+  //   return this.isRecaptchaEnterprise() && this.config.keyType === "score";
+  // }
 //allow no submit button if v2 and introduce a submit button if v3
   loadCaptcha(form) {
     if (form && this.config.siteKey) {
@@ -63,7 +63,7 @@ export default class GoogleReCaptcha {
             else if(this.config.version == 'enterprise'){
               //this.#loadScript(url + '?render=' + siteKey);
               //window.onloadRecaptchaCallback = onloadCallbackInternal;
-              let queryParams = isScoreBasedKey() ? "?render=" + siteKey: "?onload=onloadRecaptchaCallback&render=explicit";
+              let queryParams = this.config.keyType === "score" ? "?render=" + siteKey: "?onload=onloadRecaptchaCallback&render=explicit";
               this.#loadScript(url + queryParams);
             }
             else{
