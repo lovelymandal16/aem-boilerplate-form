@@ -49,7 +49,7 @@ export default class GoogleReCaptcha {
             const siteKey = this.config.siteKey;
             const url = this.config.uri ;//+ '?render=' + siteKey;
             if(this.config.version == 'v2'){
-                loadScript(url);
+                this.#loadScript(url);
             }
             else{
               if(!(window.currentMode === 'preview')){
