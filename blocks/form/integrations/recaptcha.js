@@ -34,6 +34,7 @@ export default class GoogleReCaptcha {
       this.loadPromise = new Promise((resolve, reject) => {
         const head = document.head || document.querySelector('head');
         const script = document.createElement('script');
+        script.id = 'recaptcha_script';
         script.src = url;
         script.async = true;
         script.onload = () => resolve(window.grecaptcha);
@@ -55,10 +56,14 @@ export default class GoogleReCaptcha {
                 this.#loadScriptV2(url);
             }
             else if(this.config.version == 'enterprise'){
-              //let queryParams =  "?onload=onloadRecaptchaCallback&render=explicit";
-              //this.#loadScript(url + queryParams);
               if(window.currentMode !=='edit')
-              this.#loadScript(url+"?render=" + siteKey);
+              this.#loadScript(url+'?render=' + siteKey);
+              else{
+                const captcha_script = document.getElementById('recaptcha_script');
+                if(captcha_script != null){
+                  captcha_script.remove();
+                }
+              }
             }
             else{
               this.#loadScript('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey);
