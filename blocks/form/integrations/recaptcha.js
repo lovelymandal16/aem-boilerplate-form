@@ -47,13 +47,14 @@ export default class GoogleReCaptcha {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const siteKey = this.config.siteKey;
-            const url = this.config.uri + '?render=' + siteKey;
-            
-            if(this.config.version == 'enterprise' && window.currentMode === 'preview'){
-              //don not load 
+            const url = this.config.uri ;//+ '?render=' + siteKey;
+            if(this.config.version == 'v2'){
+                loadScript(url);
             }
             else{
-              this.#loadScript(url);
+              if(!(window.currentMode === 'preview')){
+                this.#loadScript(url+ '?render=' + siteKey);
+              }
             }
             // const siteKey = this.config.siteKey;
             // var url;  
