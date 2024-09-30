@@ -92,8 +92,15 @@ export default class GoogleReCaptcha {
     return new Promise((resolve) => {
       const { grecaptcha } = window;
       grecaptcha.ready(async () => {
-        const token = await grecaptcha.execute(this.config.siteKey, { action: 'submit' });
-        resolve(token);
+        if(this.config.version == 'v2'){
+          const token = await grecaptcha.getResponse();
+          resolve(token);
+        }
+        else{
+          const token = await grecaptcha.execute(this.config.siteKey, { action: 'submit' });
+          resolve(token);
+        }
+        
       });
     });
   }
