@@ -1,13 +1,11 @@
 export default class GoogleReCaptcha {
   id;
 
-  //siteKey;
   config; 
 
   loadPromise;
 
   constructor(config, id) {
-    //this.siteKey = siteKey;
     this.config = config;
     this.id = id;
   }
@@ -67,13 +65,13 @@ export default class GoogleReCaptcha {
   }
 
   async getToken() {
-    if (!this.siteKey) {
+    if (!this.config.siteKey) {
       return null;
     }
     return new Promise((resolve) => {
       const { grecaptcha } = window;
       grecaptcha.ready(async () => {
-        const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
+        const token = await grecaptcha.execute(this.config.siteKey, { action: 'submit' });
         resolve(token);
       });
     });
