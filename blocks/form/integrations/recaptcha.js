@@ -1,16 +1,18 @@
 export default class GoogleReCaptcha {
   id;
 
-  siteKey;
+  //siteKey;
+  config; 
 
   loadPromise;
 
-  constructor(siteKey, id) {
-    this.siteKey = siteKey;
+  constructor(config, id) {
+    //this.siteKey = siteKey;
+    this.config = config;
     this.id = id;
   }
 
-  #loadScript(url, siteKey) {
+  #loadScript(url) {
     if (!this.loadPromise) {
       this.loadPromise = new Promise((resolve, reject) => {
         //const head = document.head || document.querySelector('head');
@@ -37,15 +39,29 @@ export default class GoogleReCaptcha {
       });
     }
   }
-
+//allow no submit button if v2 and introduce a submit button if v3
   loadCaptcha(form) {
-    if (form && this.siteKey) {
+    if (form && this.config.siteKey) {
       const submit = form.querySelector('button[type="submit"]');
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            //this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${this.siteKey}`);
-            this.#loadScript('https://www.recaptcha.net/recaptcha/api.js', this.siteKey);
+            const siteKey = this.config.siteKey;
+            const url = this.config.uri + '?render=' + siteKey;
+            
+            if(this.config.version == 'enterprise' && window.currentMode === 'preview'){
+              //don not load 
+            }
+            else{
+              this.#loadScript(url);
+            }
+            // const siteKey = this.config.siteKey;
+            // var url;  
+            // if(this.config.version == 'v2')
+            //   url = this.config.uri; 
+            // else
+            //   url = this.config.uri + '?render=' + siteKey;
+            // //this.#loadScript('https://www.recaptcha.net/recaptcha/api.js', this.siteKey);
             obs.disconnect();
           }
         });
@@ -59,7 +75,7 @@ export default class GoogleReCaptcha {
     }
     else{
       console.warn('Form or siteKey is not defined');
-      alert('Form or siteKey is not defined');
+      alert('can not load captcha. Form or siteKey is not defined');
     }
   }
 
