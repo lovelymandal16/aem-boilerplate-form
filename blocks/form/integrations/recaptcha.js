@@ -91,7 +91,14 @@ export default class GoogleReCaptcha {
     }
     return new Promise((resolve) => {
       const { grecaptcha } = window;
-      grecaptcha.ready(async () => {
+      if(this.config.version == 'enterprise'){
+        grecaptcha.enterprise.ready(async () => {
+        const token = await grecaptcha.enterprise.execute(this.config.siteKey, {action: 'submit'});
+        resolve(token); 
+        });
+      }
+      else{
+        grecaptcha.ready(async () => {
         if(this.config.version == 'v2'){
           const token = await grecaptcha.getResponse();
           resolve(token);
@@ -101,7 +108,9 @@ export default class GoogleReCaptcha {
           resolve(token);
         }
         
-      });
+        });
+      }
+      
     });
   }
 }
