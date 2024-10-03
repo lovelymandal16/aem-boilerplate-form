@@ -97,7 +97,7 @@ export default class GoogleReCaptcha {
       const { grecaptcha } = window;
       if(this.config.version == 'enterprise'){
         grecaptcha.enterprise.ready(async () => {
-        const submitaction =      submit_fiveenter_recaptcha1727771353377 
+       
         const token = await grecaptcha.enterprise.execute(this.config.siteKey, {action: 'submit_'+doc_name+'_'+this.id});
         resolve(token); 
         });
