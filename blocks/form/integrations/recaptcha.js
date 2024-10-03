@@ -98,7 +98,8 @@ export default class GoogleReCaptcha {
       const { grecaptcha } = window;
       if(this.config.version == 'enterprise'){
         grecaptcha.enterprise.ready(async () => {
-        const submit_action = 'submit_'+this.formName+'_'+this.id;
+        //const submit_action = 'submit_'+this.formName+'_'+this.id;
+        const submit_action = 'submit_'+this.formName+'_'+this.name;
         const token = await grecaptcha.enterprise.execute(this.config.siteKey, {action: submit_action});
         resolve(token); 
         });
