@@ -415,7 +415,7 @@ export async function createForm(formDef, data) {
      const config = captchaField?.properties?.['fd:captcha']?.config; 
      //captcha = new GoogleReCaptcha(siteKey, captchaField.id);// add new var config, 
      const  doc_name = captchaField?.properties?.['fd:path']?.split('/')[2] ;//:formPath.split("/")[2];
-     captcha = new GoogleReCaptcha(config, captchaField.name, doc_name); 
+     captcha = new GoogleReCaptcha(config,captchaField.id, captchaField.name, doc_name); 
      captcha.loadCaptcha(form);
     //captcha = renderCaptcha(captchaField, form)
   }

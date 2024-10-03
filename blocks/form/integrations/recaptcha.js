@@ -1,6 +1,6 @@
 export default class GoogleReCaptcha {
   id;
-
+  name; 
   config; 
 
   formName; 
@@ -8,8 +8,9 @@ export default class GoogleReCaptcha {
   loadPromise;
 
 
-  constructor(config, id, formName) {
+  constructor(config, id, name ,formName) {
     this.config = config;
+    this.name = name;
     this.id = id;
     this.formName = formName;
   }
