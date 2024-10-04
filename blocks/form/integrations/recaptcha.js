@@ -63,12 +63,12 @@ export default class GoogleReCaptcha {
             else if(this.config.version == 'enterprise'){
               if(window.currentMode !=='edit')
               this.#loadScript(url+'?render=' + siteKey);
-              // else{
-              //   const captcha_script = document.getElementById('recaptcha_script');
-              //   if(captcha_script != null){
-              //     captcha_script.remove();
-              //   }
-              // }
+              else{
+                const captcha_script = document.getElementById('recaptcha_script');
+                if(captcha_script != null){
+                  captcha_script.remove();
+                }
+              }
             }
             else{
               this.#loadScript('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey);
