@@ -64,7 +64,7 @@ export default class GoogleReCaptcha {
             }
             else if(this.config.version == 'enterprise'){
               if(window.currentMode !=='edit')
-              this.#loadScript(url+'?render=' + siteKey);
+              this.#loadScriptV2(url+'?render=' + siteKey, form);
             }
             else{
               this.#loadScriptV2('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey, form);
