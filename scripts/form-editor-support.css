@@ -49,7 +49,11 @@ form.edit-mode .fragment-wrapper.edit-mode .fragment-title {
     padding-left: 25px;
 }
 
- main .form form.edit-mode .captcha-wrapper:not(.edit-mode){
+/* div.grecaptcha-badge {
+    display: none !important;   
+} */
+
+main .form form.edit-mode .captcha-wrapper:not(.edit-mode){
     display: none;
 }  
 

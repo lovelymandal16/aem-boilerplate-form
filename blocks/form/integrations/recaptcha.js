@@ -63,11 +63,11 @@ export default class GoogleReCaptcha {
                 this.#loadScriptV2(url, form);
             }
             else if(this.config.version == 'enterprise'){
-              if(window.currentMode !=='edit')
-              this.#loadScriptV2(url+'?render=' + siteKey, form);
+              //if(window.currentMode !=='edit')
+              this.#loadScript(url+'?render=' + siteKey);
             }
             else{
-              this.#loadScriptV2('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey, form);
+              this.#loadScript('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey);
             }
             obs.disconnect();
           }
