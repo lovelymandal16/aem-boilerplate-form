@@ -61,14 +61,14 @@ export default class GoogleReCaptcha {
                 this.#loadScriptV2(url);
             }
             else if(this.config.version == 'enterprise'){
-              if(window.currentMode !=='edit')
-              this.#loadScript(url+'?render=' + siteKey);
-              else{
-                const captcha_script = document.getElementById('recaptcha_script');
-                if(captcha_script != null){
-                  captcha_script.remove();
-                }
-              }
+              //if(window.currentMode !=='edit')
+              this.#loadScriptV2(url+'?render=' + siteKey);
+              // else{
+              //   const captcha_script = document.getElementById('recaptcha_script');
+              //   if(captcha_script != null){
+              //     captcha_script.remove();
+              //   }
+              // }
             }
             else{
               this.#loadScript('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey);
