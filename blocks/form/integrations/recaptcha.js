@@ -15,10 +15,13 @@ export default class GoogleReCaptcha {
     this.formName = formName;
   }
 
-  #loadScriptV2(url) {
+  #loadScriptV2(url, form) {
     if (!this.loadPromise) {
       this.loadPromise = new Promise((resolve, reject) => {
-        const captchaWrapper = document.getElementsByClassName('captcha-wrapper')[0];
+        const captchaWrapper = form.getElementsByClassName('captcha-wrapper')[0];
+        if(captchaWrapper == null){
+          captchaWrapper = document.createElement('div');
+        }
         const script = document.createElement('script');
         script.src = url;
         script.async = true;
@@ -39,7 +42,6 @@ export default class GoogleReCaptcha {
       this.loadPromise = new Promise((resolve, reject) => {
         const head = document.head || document.querySelector('head');
         const script = document.createElement('script');
-        script.id = 'recaptcha_script';
         script.src = url;
         script.async = true;
         script.onload = () => resolve(window.grecaptcha);
@@ -58,17 +60,11 @@ export default class GoogleReCaptcha {
             const siteKey = this.config.siteKey;
             const url = this.config.uri ;
             if(this.config.version == 'v2'){
-                this.#loadScriptV2(url);
+                this.#loadScriptV2(url, form);
             }
             else if(this.config.version == 'enterprise'){
               if(window.currentMode !=='edit')
               this.#loadScript(url+'?render=' + siteKey);
-              else{
-                const captcha_script = document.getElementById('recaptcha_script');
-                if(captcha_script != null){
-                  captcha_script.remove();
-                }
-              }
             }
             else{
               this.#loadScript('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey);

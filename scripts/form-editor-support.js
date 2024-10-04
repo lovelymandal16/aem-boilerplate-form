@@ -77,25 +77,12 @@ function generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition) {
   });
 }
 
-function generateCaptchaRendition(fragmentFieldWrapper, fragmentDefinition) {
+function generateCaptchaRendition(captchaFieldWrapper, fragmentDefinition) {
   const titleEl = document.createElement('div');
   titleEl.classList.add('captcha-title');
   titleEl.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
   titleEl.id ="recaptcha-title";
-  fragmentFieldWrapper.appendChild(titleEl);
-  // const titleEl2 = document.createElement('div');
-  // titleEl2.classList.add('captcha-title2');
- // titleEl2.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
- // titleEl2.id ="recaptcha-title2";
-  //fragmentFieldWrapper.appendChild(titleEl2);
-  //fragmentFieldWrapper.appendChild(document.createElement('hr'));
-  // const fragItems = getItems(fragmentDefinition);
-  // fragItems.forEach((fragItem) => {
-  //   const itemLabel = fragItem.label?.value || fragItem.name;
-  //   const itemLabelEl = document.createTextNode(itemLabel);
-  //   fragmentFieldWrapper.appendChild(itemLabelEl);
-  //   fragmentFieldWrapper.appendChild(document.createElement('br'));
-  // });
+  captchaFieldWrapper.appendChild(titleEl);
 }
 
 function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
@@ -120,22 +107,22 @@ function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
   }
 }
 
-function annotateRecaptcha(fragmentFieldWrapper, fragmentDefinition) {
-  fragmentFieldWrapper.classList.toggle('captcha-wrapper', true);
+function annotateRecaptcha(captchaFieldWrapper, recaptchaDefinition) {
+  captchaFieldWrapper.classList.toggle('captcha-wrapper', true);
   if (document.documentElement.classList.contains('adobe-ue-edit')){
  // if (!fragmentFieldWrapper.classList.contains('edit-mode')) {
-    const newFieldWrapper = fragmentFieldWrapper.cloneNode(true);
+    const newFieldWrapper = captchaFieldWrapper.cloneNode(true);
     newFieldWrapper.setAttribute('data-aue-type', 'component');
-    newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fragmentDefinition.properties['fd:path']}`);
+    newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${recaptchaDefinition.properties['fd:path']}`);
     newFieldWrapper.setAttribute('data-aue-model', 'recaptcha-v1');
-    newFieldWrapper.setAttribute('data-aue-label', fragmentDefinition.label?.value || fragmentDefinition.name);
+    newFieldWrapper.setAttribute('data-aue-label', recaptchaDefinition.label?.value || recaptchaDefinition.name);
     newFieldWrapper.classList.add('edit-mode');
     newFieldWrapper.replaceChildren();
-    fragmentFieldWrapper.insertAdjacentElement('afterend', newFieldWrapper);
-    generateCaptchaRendition(newFieldWrapper, fragmentDefinition);
+    captchaFieldWrapper.insertAdjacentElement('afterend', newFieldWrapper);
+    generateCaptchaRendition(newFieldWrapper, recaptchaDefinition);
   } else {
-    fragmentFieldWrapper.replaceChildren();
-    generateCaptchaRendition(fragmentFieldWrapper, fragmentDefinition);
+    captchaFieldWrapper.replaceChildren();
+    generateCaptchaRendition(captchaFieldWrapper, recaptchaDefinition);
   }
 }
 
