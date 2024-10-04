@@ -61,8 +61,8 @@ export default class GoogleReCaptcha {
                 this.#loadScriptV2(url);
             }
             else if(this.config.version == 'enterprise'){
-              //if(window.currentMode !=='edit')
-              this.#loadScriptV2(url+'?render=' + siteKey);
+              if(window.currentMode !=='edit')
+              this.#loadScript(url+'?render=' + siteKey);
               // else{
               //   const captcha_script = document.getElementById('recaptcha_script');
               //   if(captcha_script != null){
