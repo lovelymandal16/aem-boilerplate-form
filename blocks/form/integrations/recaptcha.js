@@ -67,7 +67,7 @@ export default class GoogleReCaptcha {
               this.#loadScript(url+'?render=' + siteKey);
             }
             else{
-              this.#loadScript('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey);
+              this.#loadScriptV2('https://www.recaptcha.net/recaptcha/api.js?render=' + siteKey, form);
             }
             obs.disconnect();
           }
