@@ -83,6 +83,10 @@ function generateCaptchaRendition(captchaFieldWrapper, fragmentDefinition) {
   titleEl.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
   titleEl.id ="recaptcha-title";
   captchaFieldWrapper.appendChild(titleEl);
+  const captchaEnterprise = document.getElementsByName('grecaptcha-badge');
+  if(captchaEnterprise.length > 0){
+    captchaEnterprise[0].classList.add('edit-mode');
+  }
 }
 
 function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
