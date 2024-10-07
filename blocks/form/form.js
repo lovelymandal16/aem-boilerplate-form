@@ -400,7 +400,7 @@ async function createFormForAuthoring(formDef) {
 
 function getSitePageName(path) {
   if(path == null) return "";
-  const index = path.lastIndexOf('jcr:content');
+  const index = path.lastIndexOf('/jcr:content');
   if (index === -1) {
     return "";
   }
