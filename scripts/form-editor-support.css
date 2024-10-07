@@ -31,7 +31,7 @@ main .form form:not(.edit-mode) .fragment-wrapper.edit-mode{
 }
 
 :root.adobe-ue-edit .grecaptcha-badge {
-    display: none;
+    display: none !important;
 }
 
 /* main .form form:not(edit-mode) ~ div div.grecaptcha-badge {
