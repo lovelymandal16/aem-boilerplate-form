@@ -30,7 +30,7 @@ main .form form:not(.edit-mode) .fragment-wrapper.edit-mode{
     display: none;
 }
 
-main .form.edit-mode div.grecaptcha-badge {
+main .form.edit-mode ~ div .grecaptcha-badge {
     display: none !important;
 }
 
