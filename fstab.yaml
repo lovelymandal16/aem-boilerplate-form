@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url:  https://gelding-sought-condor.ngrok-free.app/bin/franklin.delivery/lovelymandal16/aem-boilerplate-form/main
+    url:   https://04c0-103-43-112-97.ngrok-free.app/bin/franklin.delivery/lovelymandal16/aem-boilerplate-form/main
     type: "markup"
     suffix: ".html"
