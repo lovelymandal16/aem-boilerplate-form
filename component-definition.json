@@ -440,14 +440,14 @@
           }
         },
         {
-          "title": "reCAPTCHA (v1)",
+          "title": "CAPTCHA",
           "id": "recaptcha-v1",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/fd/components/form/recaptcha/v1/recaptcha",
                 "template": {
-                  "jcr:title": "reCAPTCHA (v1)",
+                  "jcr:title": "CAPTCHA",
                   "fieldType": "captcha",
                   "enabled": true,
                   "visible": true

@@ -398,6 +398,16 @@ async function createFormForAuthoring(formDef) {
   return form;
 }
 
+function getSitePageName(path) {
+  if(path == null) return "";
+  const index = path.lastIndexOf('jcr:content');
+  if (index === -1) {
+    return "";
+  }
+  path = path.substring(0, index);
+  const pathArray = path.split('/');
+  return pathArray[pathArray.length - 1].replaceAll("-","_");
+}
 
 export async function createForm(formDef, data) {
   const { action: formPath } = formDef;
@@ -414,8 +424,9 @@ export async function createForm(formDef, data) {
      const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
      const config = captchaField?.properties?.['fd:captcha']?.config; 
      //captcha = new GoogleReCaptcha(siteKey, captchaField.id);// add new var config, 
-     const  doc_name = captchaField?.properties?.['fd:path']?.split('/')[2] ;//:formPath.split("/")[2];
-     captcha = new GoogleReCaptcha(config,captchaField.id, captchaField.name, doc_name); 
+     const page_name = getSitePageName(captchaField?.properties?.['fd:path']);
+     //const  doc_name = captchaField?.properties?.['fd:path']?.split('/')[2] ;//:formPath.split("/")[2]; // to do submit action name
+     captcha = new GoogleReCaptcha(config,captchaField.id, captchaField.name, page_name); 
      captcha.loadCaptcha(form);
     //captcha = renderCaptcha(captchaField, form)
   }
