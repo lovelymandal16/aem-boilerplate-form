@@ -84,9 +84,9 @@ function generateCaptchaRendition(captchaFieldWrapper, fragmentDefinition) {
   titleEl.id ="recaptcha-title";
   captchaFieldWrapper.appendChild(titleEl);
   const captchaEnterprise = document.getElementsByClassName('grecaptcha-badge');
-  if(captchaEnterprise.length > 0){
-    captchaEnterprise[0].classList.add('edit-mode');
-  }
+  // if(captchaEnterprise.length > 0){
+  //   captchaEnterprise[0].classList.add('edit-mode');
+  // }
 }
 
 function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
