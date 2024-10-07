@@ -75,14 +75,14 @@ export default class GoogleReCaptcha {
       });
       if(submit==null){
         console.error('Submit button is not defined');
-        alert('Submit button is not defined. Add a submit button to the form');
+        alert('Submit button is not defined: To load CAPTCHA please add a submit button to the form.');
       }
       else
         obs.observe(submit);
     }
     else{
       console.warn('Form or siteKey is not defined');
-      alert('can not load captcha. Form or siteKey is not defined');
+      alert('Can not load captcha. Form or siteKey is not defined');
     }
   }
 
