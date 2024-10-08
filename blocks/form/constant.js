@@ -19,7 +19,7 @@ export const defaultErrorMessages = {
 // eslint-disable-next-line no-useless-escape
 export const emailPattern = '([A-Za-z0-9][._]?)+[A-Za-z0-9]@[A-Za-z0-9]+(\.?[A-Za-z0-9]){2}\.([A-Za-z0-9]{2,4})?';
 
-let submitBaseUrl = 'http://localhost:4503';
+let submitBaseUrl = '';
 
 export function setSubmitBaseUrl(url) {
   submitBaseUrl = url;
