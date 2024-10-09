@@ -74,8 +74,7 @@ function constructPayload(form) {
 async function prepareRequest(form) {
   const { payload } = constructPayload(form);
   const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Basic YWRtaW46YWRtaW4='
+    'Content-Type': 'application/json'
   };
   const body = { data: payload };
   const url = form.dataset.submit || form.dataset.action;
@@ -117,9 +116,9 @@ export async function handleSubmit(e, form, captcha) {
       // hide error message in case it was shown before
       form.querySelectorAll('.form-message.show').forEach((el) => el.classList.remove('show'));
 
-      //if (form.dataset.source === 'sheet') {
+      if (form.dataset.source === 'sheet') {
         await submitDocBasedForm(form, captcha);
-      //}
+      }
     }
   } else {
     const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
