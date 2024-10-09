@@ -75,6 +75,7 @@ async function prepareRequest(form) {
   const { payload } = constructPayload(form);
   const headers = {
     'Content-Type': 'application/json',
+    'Authorization': 'Basic YWRtaW46YWRtaW4='
   };
   const body = { data: payload };
   const url = form.dataset.submit || form.dataset.action;
