@@ -2518,6 +2518,7 @@ const request = async (context, uri, httpVerb, payload, success, error, headers)
             inputPayload = urlEncoded(payload);
         }
     }
+    requestOptions.headers = {...headers };
     const result = await request$1(endpoint, inputPayload, requestOptions);
     if (result?.status >= 200 && result?.status <= 299) {
         const eName = getCustomEventName(success);
