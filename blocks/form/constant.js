@@ -1,6 +1,6 @@
 export const fileAttachmentText = 'Attach';
 export const dragDropText = 'Drag and Drop To Upload';
-export const submitBaseUrl = 'http://localhost:4503';
+export const submitBaseUrl = 'http://localhost:4502';
 export const DEFAULT_THANK_YOU_MESSAGE = 'Thank you for your submission.';
 
 export const defaultErrorMessages = {
